@@ -3,8 +3,12 @@ MilkShake: A Thick Client Javascript Framework
 
 I am not a huge fan of magic in applications. I like manual mode not automatic. I also hate popping between css, html, and js, remembering class names between these 3 files, making sure not to mispell anything. Frankly I would prefer to move everything into js, and program web apps more like traditional GUI applications. This little diddy was my experiment to see if concepts from iOS (ViewControllers and subviews) could be ported into a thick client javascript framework.
 
-As a proof of concept I implemented a simple crappy looking todo list application.
+As a proof of concept I implemented a simple crappy looking todo list application. It relies on jquery and underscore for templating. I also used Resig's "Class" class to accomplish something resembling classical inheritance.
 
+	cd MilkShake
+	python -m SimpleHTTPServer
+	Serving HTTP on 0.0.0.0 port 8000 ...
+	
 The idea is that you first create view components and tack on some convenience methods to these views:
 
 	 var TodoItem = MilkShake.View.extend({
@@ -30,6 +34,7 @@ The idea is that you first create view components and tack on some convenience m
 			border_bottom_color: "#CCCCCC"
 		}
 	 });
+	 // create a todoItem: var item = new TodoItem({todoText: "do laundry!"})
 
 All of the code relevant to this view can be edited in one place, you edit the CSS properties right here... no need to hop to another file. Want to edit the html for the view? same deal, the template is right there. Underscore is used for templating, all you have to do is stash your template variables in the property `template_variables`. rendering is handled automatically by the "super" class. 
 
